@@ -4,7 +4,7 @@ Plugin Name:  Gutenpride
 Plugin URI:   https://github.com/mkaz/gutenpride
 Description:  A simple example block displaying Gutenberg pride
 Author:       Marcus Kazmierczak
-Author URI:   https://mkaz.tech/
+Author URI:   https://mkaz.blog/
 */
 
 
