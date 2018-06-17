@@ -9,7 +9,7 @@ Pride](https://www.typewithpride.com/)
 
 Example:
 
-<img src="gutenpride-screenshot.png" width="471" style="border: 1px solid #CCC" />
+<img src="gutenpride-screenshot.png" width="405" />
 
 
 Note: Browser support for color fonts is still limited, this works with
