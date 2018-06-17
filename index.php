@@ -17,5 +17,15 @@ function mkaz_gutenpride_editor_assets() {
 		plugins_url( 'block.built.js', __FILE__ ),
 		array( 'wp-blocks', 'wp-element' )
 	);
+
 }
 add_action( 'enqueue_block_editor_assets', 'mkaz_gutenpride_editor_assets' );
+
+function mkaz_gutenpride_view_assets() {
+	wp_enqueue_style(
+		'mkaz-gutenpride-style',
+		plugins_url( 'style.css', __FILE__ )
+	);
+}
+add_action( 'wp_enqueue_scripts', 'mkaz_gutenpride_view_assets' );
+add_action( 'admin_enqueue_scripts', 'mkaz_gutenpride_view_assets' );

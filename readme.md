@@ -1,14 +1,19 @@
 
 # Gutenpride
 
-A sample repository for showing how to build a Gutenberg blocks.
+A Gutenberg block to show your pride!
 
-When enabled on WordPress, this plugin creates a "Gutenpride" block
-for Gutenberg which will insert:
+When enabled on WordPress, this plugin creates an editable
+<b>Gutenpride</b> block using the color font Gilbert from [Type with
+Pride](https://www.typewithpride.com/)
 
-> "❤️ This post proudly created in Gutenberg"
+Example:
 
-For full explanation see blog post at: https://mkaz.tech/
+<img src="gutenpride-screenshot.png" width="471" style="border: 1px solid #CCC" />
+
+
+Note: Browser support for color fonts is still limited, this works with
+Firefox, see [colorfonts.wtf](https://www.colorfonts.wtf/) for more info.
 
 
 ### Usage

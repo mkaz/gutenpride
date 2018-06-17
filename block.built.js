@@ -75,41 +75,47 @@
 
 var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
+var PlainText = wp.editor.PlainText;
 
-
-var label = __('This post proudly created in');
 
 registerBlockType('mkaz/gutenpride', {
 	title: 'Gutenpride',
 	icon: 'heart',
 	category: 'widgets',
-	edit: function edit() {
+	attributes: {
+		message: {
+			type: 'string',
+			default: '❤️  Gutenberg'
+		}
+	},
+
+	edit: function edit(_ref) {
+		var attributes = _ref.attributes,
+		    setAttributes = _ref.setAttributes;
+		var message = attributes.message;
+
+		var updateMessage = function updateMessage(message) {
+			return setAttributes({ message: message });
+		};
 
 		return wp.element.createElement(
 			'div',
-			null,
-			'\u2764\uFE0F ',
-			label,
-			' ',
-			wp.element.createElement(
-				'a',
-				{ href: 'https://wordpress.org/plugins/gutenberg/' },
-				'Gutenberg'
-			)
+			{ className: 'gutenpride' },
+			wp.element.createElement(PlainText, {
+				value: message,
+				onChange: updateMessage,
+				placeholder: 'Be proud'
+			})
 		);
 	},
-	save: function save() {
+	save: function save(_ref2) {
+		var attributes = _ref2.attributes;
+		var message = attributes.message;
+
 		return wp.element.createElement(
 			'div',
-			null,
-			'\u2764\uFE0F ',
-			label,
-			' ',
-			wp.element.createElement(
-				'a',
-				{ href: 'https://wordpress.org/plugins/gutenberg/' },
-				'Gutenberg'
-			)
+			{ className: 'gutenpride' },
+			message
 		);
 	}
 });

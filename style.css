@@ -1,0 +1,11 @@
+
+@font-face {
+    font-family: Gilbert;
+    src: url(gilbert-color.otf);
+    font-weight: bold;
+}
+
+.gutenpride {
+	font-family: Gilbert;
+	font-size: 64px;
+}

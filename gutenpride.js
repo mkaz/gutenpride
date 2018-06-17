@@ -6,25 +6,38 @@
 
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
-
-const label = __( 'This post proudly created in' );
+const { PlainText } = wp.editor;
 
 registerBlockType( 'mkaz/gutenpride', {
 	title: 'Gutenpride',
 	icon: 'heart',
 	category: 'widgets',
-	edit() {
-		
+	attributes: {
+		message: {
+			type: 'string',
+			default: '❤️  Gutenberg',
+		}
+	},
+
+	edit( { attributes, setAttributes } ) {
+		const { message } = attributes;
+		const updateMessage = message => setAttributes( { message } );
+
 		return (
-			<div>
-				❤️ { label } <a href="https://wordpress.org/plugins/gutenberg/">Gutenberg</a>
+			<div className="gutenpride">
+				<PlainText
+					value={message}
+					onChange={updateMessage}
+					placeholder="Be proud"
+				/>
 			</div>
 		);
 	},
-	save() {
+	save( { attributes } ) {
+		const { message } = attributes;
 		return (
-			<div>
-				❤️ { label } <a href="https://wordpress.org/plugins/gutenberg/">Gutenberg</a>
+			<div className="gutenpride">
+				{ message }
 			</div>
 		);
 	},
