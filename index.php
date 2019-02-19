@@ -11,21 +11,26 @@ Author URI:   https://mkaz.blog/
 /**
  * Enqueue assets for editor portion of Gutenberg
  */
-function mkaz_gutenpride_editor_assets() {
-	wp_enqueue_script(
-		'mkaz-gutenpride',
-		plugins_url( 'block.built.js', __FILE__ ),
-		array( 'wp-blocks', 'wp-element' )
+function gutenpride_init() {
+	wp_register_script(
+		'gutenpride-script',
+		plugins_url( 'block.build.js', __FILE__ ),
+		array( 'wp-blocks', 'wp-editor' )
 	);
 
-}
-add_action( 'enqueue_block_editor_assets', 'mkaz_gutenpride_editor_assets' );
-
-function mkaz_gutenpride_view_assets() {
-	wp_enqueue_style(
-		'mkaz-gutenpride-style',
-		plugins_url( 'style.css', __FILE__ )
+	wp_register_style(
+		'gutenpride-style',
+		plugins_url( 'style.css', __FILE__ ),
+		array(),
+		filemtime( plugin_dir_path( __FILE__ ) . 'style.css' )
 	);
+
+	register_block_type( 'mkaz/gutenpride', array(
+		'editor_script' => 'gutenpride-script',
+		'editor_style' => 'gutenpride-style',
+		'style' => 'gutenpride-style'
+	) );
+
 }
-add_action( 'wp_enqueue_scripts', 'mkaz_gutenpride_view_assets' );
-add_action( 'admin_enqueue_scripts', 'mkaz_gutenpride_view_assets' );
+add_action( 'init', 'gutenpride_init' );
+
