@@ -4,7 +4,6 @@
  * A gutenberg block that displays a powered by Gutenberg message
  */
 
-const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 const { PlainText } = wp.editor;
 

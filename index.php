@@ -14,8 +14,8 @@ Author URI:   https://mkaz.blog/
 function mkaz_gutenpride_editor_assets() {
 	wp_enqueue_script(
 		'mkaz-gutenpride',
-		plugins_url( 'block.built.js', __FILE__ ),
-		array( 'wp-blocks', 'wp-element' )
+		plugins_url( 'block.build.js', __FILE__ ),
+		array( 'wp-blocks', 'wp-editor' )
 	);
 
 }
