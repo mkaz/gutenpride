@@ -4,41 +4,39 @@
  * A gutenberg block that displays a powered by Gutenberg message
  */
 
-const { __ } = wp.i18n;
-const { registerBlockType } = wp.blocks;
-const { PlainText } = wp.editor;
+( function( wp ) {
+	const el = wp.element.createElement;
+	const registerBlockType = wp.blocks.registerBlockType;
+	const PlainText = wp.editor.PlainText;
 
-registerBlockType( 'mkaz/gutenpride', {
-	title: 'Gutenpride',
-	icon: 'heart',
-	category: 'widgets',
-	attributes: {
-		message: {
-			type: 'string',
-			default: '❤️  Gutenberg',
-		}
-	},
+	registerBlockType( 'mkaz/gutenpride', {
+		title: 'Gutenpride',
+		icon: 'heart',
+		category: 'widgets',
+		attributes: {
+			message: {
+				type: 'string',
+				default: '❤️  Gutenberg',
+			}
+		},
 
-	edit( { attributes, setAttributes } ) {
-		const { message } = attributes;
-		const updateMessage = message => setAttributes( { message } );
+		edit: function( props ) {
+			const { message } = props.attributes;
+			const updateMessage = message => props.setAttributes( { message: message } );
 
-		return (
-			<div className="gutenpride">
-				<PlainText
-					value={message}
-					onChange={updateMessage}
-					placeholder="Be proud"
-				/>
-			</div>
-		);
-	},
-	save( { attributes } ) {
-		const { message } = attributes;
-		return (
-			<div className="gutenpride">
-				{ message }
-			</div>
-		);
-	},
-} );
+			return el( 'div', { className: 'gutenpride' },
+				el( PlainText, {
+						value: message,
+						onChange: updateMessage,
+						placeholder: 'Be proud',
+					}
+				)
+			);
+		},
+
+		save: function( props ) {
+			const { message } = props.attributes;
+			return el( 'div', { className: 'gutenpride' }, message );
+		},
+	} );
+} )( window.wp );
